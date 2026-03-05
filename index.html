@@ -300,8 +300,8 @@
       background: rgba(255,255,255,0.04);
       z-index: 1;
     }
-    .filmstrip-bg div { background: #18150F; }
-    .filmstrip-bg div:nth-child(odd) { background: #1A1714; }
+    .filmstrip-bg div { background: transparent; }
+    .filmstrip-bg div:nth-child(odd) { background: rgba(255,255,255,0.015); }
 
     .perf-strip {
       position: absolute;
@@ -824,7 +824,7 @@
       -->
       <video
         autoplay muted loop playsinline
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:1;">
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;z-index:3;">
         <source src="reel-loop.mp4" type="video/mp4">
       </video>
 
