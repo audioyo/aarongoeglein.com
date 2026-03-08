@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aaron Goeglein — Producer. Developer. Founder.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23BF4A18'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Palatino Linotype%2C Palatino%2C Georgia%2C serif' font-style='italic' font-weight='600' font-size='22' fill='%23FAF9F6'%3EG%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- 
@@ -342,9 +343,9 @@
       right: 2rem;
       left: 2rem;
       z-index: 10;
-      background: rgba(244,241,235,0.055);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10, 8, 5, 0.72);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
       padding: 1.4rem 1.6rem;
     }
 
@@ -354,29 +355,29 @@
       justify-content: space-between;
       gap: 1rem;
       padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .cred-row:first-child { padding-top: 0; }
     .cred-row:last-child { border-bottom: none; padding-bottom: 0; }
     .cred-co {
       font-family: var(--tech);
       font-weight: 600;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
     }
     .cred-role-text {
       font-family: var(--serif);
       font-style: italic;
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.55);
       margin-top: 0.1rem;
     }
     .cred-yr {
       font-family: var(--mono);
-      font-size: 0.58rem;
-      color: rgba(255,255,255,0.28);
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.45);
       letter-spacing: 0.08em;
       white-space: nowrap;
       flex-shrink: 0;
@@ -597,8 +598,8 @@
     }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
     .exp-bullets li {
-      display: grid;
-      grid-template-columns: 16px 1fr;
+      display: flex;
+      align-items: flex-start;
       gap: 0.6rem;
       font-size: 0.93rem;
       color: var(--mid);
@@ -608,7 +609,8 @@
       content: '→';
       color: var(--accent);
       font-size: 0.78rem;
-      margin-top: 0.2rem;
+      margin-top: 0.22rem;
+      flex-shrink: 0;
     }
 
     /* ── SKILLS ── */
@@ -847,14 +849,14 @@
             <div class="cred-co">Adgile Gaming</div>
             <div class="cred-role-text">Founder &amp; CEO — Arachno Arena</div>
           </div>
-          <div class="cred-yr">Oct 2025 – Now</div>
+          <div class="cred-yr">2025 – Present</div>
         </div>
         <div class="cred-row">
           <div>
             <div class="cred-co">Klaviyo</div>
             <div class="cred-role-text">Senior Video Producer</div>
           </div>
-          <div class="cred-yr">2018 – Dec 2025</div>
+          <div class="cred-yr">2018 – 2025</div>
         </div>
         <div class="cred-row">
           <div>
@@ -878,7 +880,7 @@
   <div class="awards-strip">
     <div class="awards-inner">
       <div class="award-item">
-        <div class="award-icon">🏆</div>
+        <div class="award-icon" style="font-family:var(--tech);font-weight:700;font-size:1.4rem;color:#D4AF37;letter-spacing:0.04em;">EMMY</div>
         <div>
           <div class="award-title">National Emmy Award</div>
           <div class="award-detail">Best Sports Remote Production, 1998</div>
@@ -886,7 +888,7 @@
       </div>
       <div class="award-div"></div>
       <div class="award-item">
-        <div class="award-icon">🎖️</div>
+        <div class="award-icon" style="font-family:var(--tech);font-weight:700;font-size:1.4rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;">NOM</div>
         <div>
           <div class="award-title">Regional Emmy Nominee</div>
           <div class="award-detail">Best Audio — New England</div>
@@ -894,7 +896,7 @@
       </div>
       <div class="award-div"></div>
       <div class="award-item">
-        <div class="award-icon">⭐</div>
+        <div class="award-icon" style="font-family:var(--tech);font-weight:700;font-size:1.4rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;">MVP</div>
         <div>
           <div class="award-title">NESN MVP of the Quarter</div>
           <div class="award-detail">Q3 2017</div>
@@ -902,7 +904,7 @@
       </div>
       <div class="award-div"></div>
       <div class="award-item">
-        <div class="award-icon">🎓</div>
+        <div class="award-icon" style="font-family:var(--tech);font-weight:700;font-size:1.4rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;">B.A.</div>
         <div>
           <div class="award-title">University of Arizona</div>
           <div class="award-detail">BA Media Arts · Minor in Spanish</div>
@@ -960,9 +962,14 @@
 
     <div class="exp-grid reveal">
       <div class="exp-sidebar">
+        <div class="exp-nav-item" onclick="showExp('adgile',this)">
+          <div class="exp-nav-company">Adgile Gaming</div>
+          <div class="exp-nav-years">2025 – Present · Nashville</div>
+          <div class="exp-nav-bar"></div>
+        </div>
         <div class="exp-nav-item active" onclick="showExp('klaviyo',this)">
           <div class="exp-nav-company">Klaviyo</div>
-          <div class="exp-nav-years">2018 – Dec 2025 · Boston / Remote</div>
+          <div class="exp-nav-years">2018 – 2025 · Boston / Remote</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item" onclick="showExp('nesn',this)">
@@ -980,18 +987,13 @@
           <div class="exp-nav-years">2016 – 2018 · Boston Area</div>
           <div class="exp-nav-bar"></div>
         </div>
-        <div class="exp-nav-item" onclick="showExp('adgile',this)">
-          <div class="exp-nav-company">Adgile Gaming</div>
-          <div class="exp-nav-years">Oct 2025 – Present · Nashville</div>
-          <div class="exp-nav-bar"></div>
-        </div>
       </div>
 
       <div class="exp-content">
-        <div class="exp-panel active" id="exp-klaviyo">
+        <div class="exp-panel" id="exp-klaviyo">
           <div class="exp-role">Senior Video Producer</div>
           <div class="exp-company-full">Klaviyo — Boston, MA (Remote)</div>
-          <div class="exp-meta">2018 – December 2025 · Promoted 2022 · 7 Years: Startup → Public Company (NYSE: KVYO)</div>
+          <div class="exp-meta">2018 – 2025 · Promoted 2022 · 7 Years: Startup → Public Company (NYSE: KVYO)</div>
           <ul class="exp-bullets">
             <li>Strategically lead end-to-end production of high-quality customer education video and audio content for 7 years — from startup through public offering — directly contributing to business growth and brand alignment.</li>
             <li>Manage the full project lifecycle: ideation, storyboarding, filming, editing, and distribution strategy across social, education, and marketing formats.</li>
@@ -1036,10 +1038,10 @@
           </ul>
         </div>
 
-        <div class="exp-panel" id="exp-adgile">
+        <div class="exp-panel active" id="exp-adgile">
           <div class="exp-role">Founder &amp; CEO</div>
           <div class="exp-company-full">Adgile Gaming, LLC — Nashville, TN</div>
-          <div class="exp-meta">October 2025 – Present · Indie Game Studio · Flagship: Arachno Arena</div>
+          <div class="exp-meta">2025 – Present · Indie Game Studio · Flagship: Arachno Arena</div>
           <ul class="exp-bullets">
             <li>Founded and operate Adgile Gaming as a solo indie studio, developing Arachno Arena — a 2D deck-building Living Card Game targeting mobile and Steam.</li>
             <li>Apply 25+ years of production, creative direction, and project management experience to game design, narrative, art direction, and brand identity.</li>
@@ -1063,6 +1065,7 @@
             <div class="skill-item">Live Broadcast / Audio Mixing</div>
             <div class="skill-item">Adobe Creative Cloud</div>
             <div class="skill-item">Premiere Pro, After Effects, Audition</div>
+            <div class="skill-item">Photoshop</div>
             <div class="skill-item">Avid Pro Tools</div>
             <div class="skill-item">iZotope RX Advanced</div>
             <div class="skill-item">Final Cut Pro</div>
@@ -1089,11 +1092,10 @@
             <div class="skill-item">Unity / C# Game Development</div>
             <div class="skill-item">AI Workflow Architecture</div>
             <div class="skill-item">Claude &amp; Gemini (Agentic AI)</div>
-            <div class="skill-item">Local LLM / Ollama Deployment</div>
-            <div class="skill-item">Home Assistant Automation</div>
             <div class="skill-item">BMAD AI Dev Framework</div>
-            <div class="skill-item">Prompt Engineering</div>
+            <div class="skill-item">Local LLM / Ollama Deployment</div>
             <div class="skill-item">AI Image Generation &amp; Editing</div>
+            <div class="skill-item">Prompt Engineering</div>
           </div>
         </div>
       </div>
@@ -1115,7 +1117,7 @@
           <p class="work-subtitle">Founder, Creative Director, Developer</p>
           <p class="work-desc">A 2D deck-building Living Card Game with spider-themed strategy, mobile-first design, and AI-assisted development pipeline. Built in Unity with C# using agentic AI workflows. Targeting mobile and Steam.</p>
         </div>
-        <span class="work-year">Oct 2025 – Present</span>
+        <span class="work-year">2025 – Present</span>
       </div>
 
       <div class="work-item">
@@ -1125,7 +1127,7 @@
           <p class="work-subtitle">Senior Video Producer — 7 Years</p>
           <p class="work-desc">Produced and led the complete video and audio content strategy for one of the fastest-growing SaaS brands in marketing technology — from Series A through public offering on the NYSE. Short and long-form content across social, education, and marketing channels.</p>
         </div>
-        <span class="work-year">2018 – Dec 2025</span>
+        <span class="work-year">2018 – 2025</span>
       </div>
 
       <div class="work-item">
