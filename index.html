@@ -51,7 +51,7 @@
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 1000;
+      z-index: 9999;
       opacity: 0.6;
     }
 
@@ -59,7 +59,7 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 900;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -737,7 +737,8 @@
       background: none;
       border: none;
       padding: 0;
-      z-index: 950;
+      z-index: 1100;
+      position: relative;
     }
     .nav-hamburger span {
       display: block;
@@ -758,7 +759,7 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(244, 241, 235, 0.97);
       backdrop-filter: blur(20px);
-      z-index: 800;
+      z-index: 1050;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -768,6 +769,7 @@
       transition: opacity 0.3s var(--ease);
     }
     .nav-drawer.open {
+      display: flex;
       opacity: 1;
       pointer-events: all;
     }
@@ -1333,4 +1335,14 @@
     window.addEventListener('scroll', () => {
       const y = window.scrollY + 120;
       document.querySelectorAll('[id]').forEach(s => {
-        if (s.offsetTop <= y && s.offsetTop + s.offsetHeight 
+        if (s.offsetTop <= y && s.offsetTop + s.offsetHeight > y) {
+          document.querySelectorAll('.nav-links a').forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + s.id ? 'var(--accent)' : '';
+          });
+        }
+      });
+    }, { passive: true });
+
+  </script>
+</body>
+</html>
