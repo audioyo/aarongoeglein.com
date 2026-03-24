@@ -726,6 +726,79 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 16px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 950;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--ink);
+      transition: all 0.3s var(--ease);
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(244, 241, 235, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 800;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease);
+    }
+    .nav-drawer.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-drawer a {
+      font-family: var(--tech);
+      font-weight: 600;
+      font-size: clamp(2rem, 8vw, 3rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.75rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      width: 100%;
+      text-align: center;
+      transition: color 0.2s;
+    }
+    .nav-drawer a:first-child { border-top: 1px solid var(--rule); }
+    .nav-drawer a:hover { color: var(--accent); }
+    .nav-drawer-resume {
+      margin-top: 2rem;
+      font-family: var(--mono) !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.12em !important;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent) !important;
+      border-bottom: 1px solid var(--accent) !important;
+      width: auto !important;
+      padding: 0.6rem 1.5rem !important;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
       .hero { grid-template-columns: 1fr; }
@@ -737,6 +810,9 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-resume { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-drawer { display: flex; }
       .hero-left { padding: 6.5rem 1.5rem 3rem; }
       .reel-section, .skills-section, .contact-section { padding: 5rem 1.5rem; }
       .experience-section, .work-section { padding: 5rem 1.5rem; }
@@ -761,7 +837,19 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="Aaron_Goeglein_Resume_2026.pdf" download class="nav-resume">↓ Resume</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#reel" class="drawer-link">Reel</a>
+    <a href="#experience" class="drawer-link">Experience</a>
+    <a href="#work" class="drawer-link">Work</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <a href="Aaron_Goeglein_Resume_2026.pdf" download class="drawer-link nav-drawer-resume">↓ Resume</a>
+  </div>
 
   <!-- HERO -->
   <div class="hero">
@@ -1022,9 +1110,9 @@
           <div class="exp-company-full">KPTV FOX 12 · KGO ABC 7 · ESPN X Games</div>
           <div class="exp-meta">1998 – 2008 · Portland, OR · San Francisco, CA · ESPN X Games</div>
           <ul class="exp-bullets">
-            <li><strong style="color:var(--ink)">KPTV FOX 12 (1999–2007):</strong> Key role in design of a new audio booth and installation of Euphonix Max Air audio console. Primary audio engineer for live news and sports broadcasts.</li>
-            <li><strong style="color:var(--ink)">KGO ABC 7 (2007–2008):</strong> Designed and created graphics for sports news broadcasts using Photoshop; operated VizRT graphics engine live on-air.</li>
-            <li><strong style="color:var(--ink)">ESPN X Games (1998 &amp; 1999):</strong> Operated parabolic and shotgun microphones for live remote production. The 1998 broadcast earned a <em>National Emmy Award for Best Sports Remote Production</em>.</li>
+            <li>KPTV FOX 12 (1999–2007) — Key role in the design of a new audio booth and installation of a digital audio console. Primary audio engineer for live news and sports broadcasts.</li>
+            <li>KGO ABC 7 (2007–2008) — Designed and created graphics for sports news broadcasts using Photoshop; operated VizRT graphics engine live on-air.</li>
+            <li>ESPN X Games (1998 &amp; 1999) — Operated parabolic and shotgun microphones for live remote production. The 1998 broadcast earned a National Emmy Award for Best Sports Remote Production.</li>
           </ul>
         </div>
 
@@ -1033,8 +1121,8 @@
           <div class="exp-company-full">Baypath Humane Society · Audacious Traveler</div>
           <div class="exp-meta">2016 – 2018 · Boston Metro Area · Independent</div>
           <ul class="exp-bullets">
-            <li><strong style="color:var(--ink)">Baypath Humane Society:</strong> Conceptualized, produced, and edited promotional and PSA videos for adoption outreach. Fulfilled all roles: videography (handheld/gimbal documentary style), producing, and editing.</li>
-            <li><strong style="color:var(--ink)">Audacious Traveler:</strong> Oversaw end-to-end production operations for international travel video shoots. Managed all logistics, scripting, shooting, and editing. Grew brand's YouTube channel and social media presence independently.</li>
+            <li>Baypath Humane Society — Conceptualized, produced, and edited promotional and PSA videos for animal adoption outreach. Fulfilled all roles: videography (handheld/gimbal documentary style), producing, and editing. Delivered final product in multiple formats for social media.</li>
+            <li>Audacious Traveler — Oversaw end-to-end production for international travel video shoots. Managed all logistics, scripting, shooting, and editing. Grew brand's YouTube channel and social media presence independently.</li>
           </ul>
         </div>
 
@@ -1167,7 +1255,7 @@
           Open to video production work, creative consulting, game industry conversations, and AI workflow projects.
         </p>
 
-        <a href="mailto:Aaron.Goeglein@gmail.com" class="contact-link">Aaron.Goeglein@gmail.com <span>Email</span></a>
+        <a href="/cdn-cgi/l/email-protection#a2e3c3d0cdcc8ce5cdc7c5cec7cbcce2c5cfc3cbce8cc1cdcf" class="contact-link"><span class="__cf_email__" data-cfemail="4908283b2627670e262c2e252c2027092e24282025672a2624">[email&#160;protected]</span> <span>Email</span></a>
         <a href="https://linkedin.com/in/aarongoeglein" target="_blank" class="contact-link">linkedin.com/in/aarongoeglein <span>LinkedIn ↗</span></a>
         <a href="https://adgilegaming.com" target="_blank" class="contact-link">adgilegaming.com <span>Adgile Gaming ↗</span></a>
         <a href="Aaron_Goeglein_Resume_2026.pdf" download class="contact-link">Aaron_Goeglein_Resume_2026.pdf <span>↓ Resume PDF</span></a>
@@ -1204,7 +1292,26 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navDrawer = document.getElementById('navDrawer');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navDrawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close drawer when a link is clicked
+    navDrawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navDrawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
     // Experience tabs
     function showExp(id, el) {
       document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
@@ -1226,13 +1333,4 @@
     window.addEventListener('scroll', () => {
       const y = window.scrollY + 120;
       document.querySelectorAll('[id]').forEach(s => {
-        if (s.offsetTop <= y && s.offsetTop + s.offsetHeight > y) {
-          document.querySelectorAll('.nav-links a').forEach(a => {
-            a.style.color = a.getAttribute('href') === '#' + s.id ? 'var(--accent)' : '';
-          });
-        }
-      });
-    }, { passive: true });
-  </script>
-</body>
-</html>
+        if (s.offsetTop <= y && s.offsetTop + s.offsetHeight 
