@@ -78,7 +78,7 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.35rem;
     }
     .nav-logo .nl-first {
       font-family: var(--tech);
@@ -726,6 +726,110 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── ABOUT ── */
+    .about-section {
+      background: var(--bg);
+      padding: 7rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-photo-col { position: relative; }
+    .about-photo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .about-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.4s var(--ease);
+    }
+    .about-photo-wrap:hover img { filter: grayscale(0%); }
+    /* Corner bracket accent on photo */
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; right: -8px;
+      width: 40px; height: 40px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      pointer-events: none;
+    }
+    .about-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: var(--card);
+      color: var(--faint);
+    }
+    .about-photo-placeholder-icon {
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+    .about-photo-placeholder-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .about-text-col { padding-top: 0.5rem; }
+    .about-body {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      max-width: 58ch;
+    }
+    .about-body strong { color: var(--ink); font-weight: 500; }
+    .about-body em {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--accent2);
+      font-size: 1.1em;
+    }
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .about-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+    .about-detail-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .about-detail-value { color: var(--mid); }
+
     /* ── HAMBURGER ── */
     .nav-hamburger {
       display: none;
@@ -808,6 +912,8 @@
       .exp-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-wrap { aspect-ratio: 4/3; max-width: 320px; }
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
@@ -816,6 +922,7 @@
       .nav-hamburger { display: flex; }
       .nav-drawer { display: flex; }
       .hero-left { padding: 6.5rem 1.5rem 3rem; }
+      .about-section { padding: 5rem 1.5rem; }
       .reel-section, .skills-section, .contact-section { padding: 5rem 1.5rem; }
       .experience-section, .work-section { padding: 5rem 1.5rem; }
       .awards-strip { padding: 2.5rem 1.5rem; }
@@ -833,6 +940,7 @@
       <span class="nl-last">Goeglein</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#about">About</a></li>
       <li><a href="#reel">Reel</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#work">Work</a></li>
@@ -846,6 +954,7 @@
 
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" id="navDrawer">
+    <a href="#about" class="drawer-link">About</a>
     <a href="#reel" class="drawer-link">Reel</a>
     <a href="#experience" class="drawer-link">Experience</a>
     <a href="#work" class="drawer-link">Work</a>
@@ -1229,6 +1338,56 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <div class="about-section" id="about">
+    <div class="about-inner reveal">
+
+      <div class="about-photo-col">
+        <div class="about-photo-wrap">
+          <img src="headshot.jpg" alt="Aaron Goeglein at the audio console" />
+        </div>
+      </div>
+
+      <div class="about-text-col">
+        <p class="s-label">About</p>
+        <h2 class="s-title">The <em>Person</em></h2>
+
+        <p class="about-body">
+          I've spent 25 years making things sound and look right — sometimes at the same time. I started in live broadcast audio, first freelancing for ESPN where I was part of an Emmy Award-winning production team, then in local news. I spent a decade mixing Red Sox and Bruins games at NESN, then pivoted to full video production at Klaviyo where I helped build their educational video content program from a standing start through a public offering on the NYSE.
+        </p>
+        <p class="about-body">
+          I founded <strong>Adgile Gaming</strong> — a one-person studio currently building two titles: <em>Arachno Arena</em>, a deck-building battle card game based on real spider biology, and <em>Critter Cache</em>, a gamified child/parent productivity app. I use AI workflows to enhance my skills and productivity as a solo developer, which feels like the right use of the technology.
+        </p>
+        <p class="about-body">
+          I love building and fixing things. I thoroughly enjoy the outdoors, gaming, music, technology, audiobooks, meditation, and expanded consciousness.
+        </p>
+        <p class="about-body">
+          Nashville is my home by way of Arizona, Portland, San Francisco, and Boston. I live in Music City with my wife and two kids.
+        </p>
+
+        <div class="about-details">
+          <div class="about-detail-row">
+            <span class="about-detail-label">Based</span>
+            <span class="about-detail-value">Nashville, TN</span>
+          </div>
+          <div class="about-detail-row">
+            <span class="about-detail-label">Currently</span>
+            <span class="about-detail-value">Founder &amp; CEO, Adgile Gaming · Open to opportunities</span>
+          </div>
+          <div class="about-detail-row">
+            <span class="about-detail-label">Background</span>
+            <span class="about-detail-value">Broadcast Audio · SaaS Video Production · Indie Game Dev</span>
+          </div>
+          <div class="about-detail-row">
+            <span class="about-detail-label">Education</span>
+            <span class="about-detail-value">BA Media Arts, University of Arizona</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- CONTACT -->
   <div class="contact-section" id="contact">
     <div class="contact-inner reveal">
@@ -1239,7 +1398,7 @@
           Open to video production work, creative consulting, game industry conversations, and AI workflow projects.
         </p>
 
-        <a href="/cdn-cgi/l/email-protection#a2e3c3d0cdcc8ce5cdc7c5cec7cbcce2c5cfc3cbce8cc1cdcf" class="contact-link"><span class="__cf_email__" data-cfemail="4908283b2627670e262c2e252c2027092e24282025672a2624">[email&#160;protected]</span> <span>Email</span></a>
+        <a href="mailto:Aaron.Goeglein@gmail.com" class="contact-link">Aaron.Goeglein@gmail.com <span>Email</span></a>
         <a href="https://linkedin.com/in/aarongoeglein" target="_blank" class="contact-link">linkedin.com/in/aarongoeglein <span>LinkedIn ↗</span></a>
         <a href="https://adgilegaming.com" target="_blank" class="contact-link">adgilegaming.com <span>Adgile Gaming ↗</span></a>
         <a href="Aaron_Goeglein_Resume_2026.pdf" download class="contact-link">Aaron_Goeglein_Resume_2026.pdf <span>↓ Resume PDF</span></a>
@@ -1276,7 +1435,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const navDrawer = document.getElementById('navDrawer');
