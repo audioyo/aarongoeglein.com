@@ -752,12 +752,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
       filter: grayscale(15%);
       transition: filter 0.4s var(--ease);
     }
     .about-photo-wrap:hover img { filter: grayscale(0%); }
-    /* Corner bracket accent on photo */
     .about-photo-wrap::after {
       content: '';
       position: absolute;
@@ -767,28 +767,45 @@
       border-bottom: 2px solid var(--accent);
       pointer-events: none;
     }
-    .about-photo-placeholder {
+
+    /* 3-image montage grid */
+    .about-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 4px;
+      position: relative;
+    }
+    .about-photo-grid::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; right: -8px;
+      width: 40px; height: 40px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      pointer-events: none;
+    }
+    .about-photo-primary {
+      grid-column: 1 / -1;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .about-photo-secondary {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+    }
+    .about-photo-primary img,
+    .about-photo-secondary img {
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: var(--card);
-      color: var(--faint);
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.4s var(--ease);
     }
-    .about-photo-placeholder-icon {
-      font-size: 3rem;
-      opacity: 0.3;
-    }
-    .about-photo-placeholder-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
+    .about-photo-primary:hover img,
+    .about-photo-secondary:hover img { filter: grayscale(0%); }
     .about-text-col { padding-top: 0.5rem; }
     .about-body {
       font-size: 1.05rem;
@@ -940,10 +957,10 @@
       <span class="nl-last">Goeglein</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
       <li><a href="#reel">Reel</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="Aaron_Goeglein_Resume_2026.pdf" download class="nav-resume">↓ Resume</a>
@@ -954,10 +971,10 @@
 
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" id="navDrawer">
-    <a href="#about" class="drawer-link">About</a>
     <a href="#reel" class="drawer-link">Reel</a>
     <a href="#experience" class="drawer-link">Experience</a>
     <a href="#work" class="drawer-link">Work</a>
+    <a href="#about" class="drawer-link">About</a>
     <a href="#contact" class="drawer-link">Contact</a>
     <a href="Aaron_Goeglein_Resume_2026.pdf" download class="drawer-link nav-drawer-resume">↓ Resume</a>
   </div>
@@ -981,7 +998,7 @@
         <div class="role-item">
           <div class="role-dot" style="background:var(--accent)"></div>
           <span>Senior Video Producer &amp; Editor</span>
-          <span class="role-meta">Klaviyo, 2018–2025</span>
+          <span class="role-meta">Klaviyo</span>
         </div>
         <div class="role-item">
           <div class="role-dot" style="background:var(--accent2)"></div>
@@ -990,13 +1007,13 @@
         </div>
         <div class="role-item">
           <div class="role-dot" style="background:#7A6A5A"></div>
-          <span>AI Workflow Architect</span>
-          <span class="role-meta">Agentic Systems</span>
+          <span>Agentic AI Workflow Architect</span>
+          <span class="role-meta">Adgile Gaming</span>
         </div>
         <div class="role-item">
           <div class="role-dot" style="background:var(--ink)"></div>
-          <span>Broadcast Audio Engineer &nbsp;·&nbsp; NESN / FOX / ESPN</span>
-          <span class="role-meta">Live TV</span>
+          <span>Broadcast Audio Engineer</span>
+          <span class="role-meta">NESN / FOX / ESPN</span>
         </div>
       </div>
 
@@ -1053,7 +1070,7 @@
         <div class="cred-row">
           <div>
             <div class="cred-co">Klaviyo</div>
-            <div class="cred-role-text">Senior Video Producer</div>
+            <div class="cred-role-text">Senior Video Producer — Klaviyo Academy</div>
           </div>
           <div class="cred-yr">2018 – 2025</div>
         </div>
@@ -1067,7 +1084,7 @@
         <div class="cred-row">
           <div>
             <div class="cred-co">FOX 12 / ABC 7 / ESPN</div>
-            <div class="cred-role-text">Audio Engineer &amp; Graphics</div>
+            <div class="cred-role-text">Audio Engineer &amp; Graphics — Various News / X-Games</div>
           </div>
           <div class="cred-yr">1998 – 2008</div>
         </div>
@@ -1214,7 +1231,7 @@
           <div class="exp-company-full">Baypath Humane Society · Audacious Traveler</div>
           <div class="exp-meta">2016 – 2018 · Boston Metro Area · Independent</div>
           <ul class="exp-bullets">
-            <li>Baypath Humane Society — Conceptualized, produced, and edited promotional and PSA videos for animal adoption outreach. Fulfilled all roles: videography (handheld/gimbal documentary style), producing, and editing. Delivered final product in multiple formats for social media.</li>
+            <li>Baypath Humane Society — Conceptualized, produced, and edited promotional and PSA videos for animal adoption outreach. Fulfilled all roles: videography (handheld/gimbal documentary style), producing, and editing. Delivered final product in multiple formats for broadcast PSAs and social media.</li>
             <li>Audacious Traveler — Oversaw end-to-end production for international travel video shoots. Managed all logistics, scripting, shooting, and editing. Grew brand's YouTube channel and social media presence independently.</li>
           </ul>
         </div>
@@ -1343,8 +1360,18 @@
     <div class="about-inner reveal">
 
       <div class="about-photo-col">
-        <div class="about-photo-wrap">
-          <img src="headshot.jpg" alt="Aaron Goeglein at the audio console" />
+        <div class="about-photo-grid">
+          <!-- Primary image — console shot, full width -->
+          <div class="about-photo-primary">
+            <img src="headshot.jpg" alt="Aaron Goeglein at the broadcast audio console" />
+          </div>
+          <!-- Secondary images — upload headshot2.jpg and headshot3.jpg to GitHub -->
+          <div class="about-photo-secondary">
+            <img src="headshot2.jpg" alt="Aaron Goeglein with remote audio gear" />
+          </div>
+          <div class="about-photo-secondary">
+            <img src="headshot3.jpg" alt="Aaron Goeglein" />
+          </div>
         </div>
       </div>
 
