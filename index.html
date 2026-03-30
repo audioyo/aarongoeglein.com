@@ -566,28 +566,50 @@
     .exp-nav-item.active .exp-nav-bar,
     .exp-nav-item:hover .exp-nav-bar { width: 28px; }
 
-    .exp-nav-logo {
-      display: block;
-      height: 22px;
+    /* ── EXP PANEL LOGO (right-aligned on role title line) ── */
+    .exp-role-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .exp-panel-logo {
+      height: 28px;
       width: auto;
-      max-width: 90px;
+      max-width: 110px;
       object-fit: contain;
-      object-position: left center;
-      filter: invert(1) opacity(0.45);
-      transition: filter 0.2s;
-      margin-bottom: 0.5rem;
+      object-position: right center;
+      filter: invert(1) opacity(0.5);
+      flex-shrink: 0;
     }
-    .exp-nav-item:hover .exp-nav-logo,
-    .exp-nav-item.active .exp-nav-logo {
-      filter: invert(1) opacity(0.85);
+    .exp-panel-logo.no-invert { filter: opacity(0.7); }
+
+    /* ── WORK SECTION LOGOS ── */
+    .work-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.6rem;
+      flex-shrink: 0;
     }
-    /* Adgile logo is already dark — don't invert */
-    .exp-nav-logo.no-invert {
-      filter: opacity(0.45);
+    .work-logo {
+      height: 32px;
+      width: auto;
+      max-width: 100px;
+      object-fit: contain;
+      object-position: right center;
+      display: block;
     }
-    .exp-nav-item:hover .exp-nav-logo.no-invert,
-    .exp-nav-item.active .exp-nav-logo.no-invert {
-      filter: opacity(0.85);
+    .work-logo-pair {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+    .work-logo-pair .work-logo { max-width: 44px; height: 36px; }
+    @media (max-width: 600px) {
+      .work-logo-pair { flex-direction: column; align-items: flex-end; gap: 0.4rem; }
     }
     .exp-panel { padding: 2.5rem; display: none; }
     .exp-panel.active { display: block; }
@@ -1183,25 +1205,21 @@
     <div class="exp-grid reveal">
       <div class="exp-sidebar">
         <div class="exp-nav-item" onclick="showExp('adgile',this)">
-          <img class="exp-nav-logo no-invert" src="logo-Adgile.png" alt="Adgile Gaming" />
           <div class="exp-nav-company">Adgile Gaming</div>
           <div class="exp-nav-years">2025 – Present · Nashville</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item active" onclick="showExp('klaviyo',this)">
-          <img class="exp-nav-logo" src="logo-Klaviyo.png" alt="Klaviyo" />
           <div class="exp-nav-company">Klaviyo</div>
           <div class="exp-nav-years">2018 – 2025 · Boston / Remote</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item" onclick="showExp('nesn',this)">
-          <img class="exp-nav-logo" src="logo-NESN.png" alt="NESN" />
           <div class="exp-nav-company">NESN</div>
           <div class="exp-nav-years">2008 – 2018 · Watertown, MA</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item" onclick="showExp('broadcast',this)">
-          <img class="exp-nav-logo" src="logo-ESPN.png" alt="ESPN" />
           <div class="exp-nav-company">FOX / ABC / ESPN</div>
           <div class="exp-nav-years">1998 – 2008 · Portland / SF</div>
           <div class="exp-nav-bar"></div>
@@ -1215,7 +1233,10 @@
 
       <div class="exp-content">
         <div class="exp-panel" id="exp-klaviyo">
-          <div class="exp-role">Senior Video Producer</div>
+          <div class="exp-role-header">
+            <div class="exp-role">Senior Video Producer</div>
+            <img class="exp-panel-logo" src="logo-Klaviyo.png" alt="Klaviyo" />
+          </div>
           <div class="exp-company-full">Klaviyo — Boston, MA (Remote)</div>
           <div class="exp-meta">2018 – 2025 · Promoted 2022 · 7 Years: Startup → Public Company (NYSE: KVYO)</div>
           <ul class="exp-bullets">
@@ -1228,7 +1249,10 @@
         </div>
 
         <div class="exp-panel" id="exp-nesn">
-          <div class="exp-role">Senior Audio Engineer</div>
+          <div class="exp-role-header">
+            <div class="exp-role">Senior Audio Engineer</div>
+            <img class="exp-panel-logo" src="logo-NESN.png" alt="NESN" />
+          </div>
           <div class="exp-company-full">New England Sports Network (NESN) — Watertown, MA</div>
           <div class="exp-meta">2008 – 2018 · 10 Years · Red Sox &amp; Bruins Live Broadcasts</div>
           <ul class="exp-bullets">
@@ -1242,7 +1266,10 @@
         </div>
 
         <div class="exp-panel" id="exp-broadcast">
-          <div class="exp-role">Audio Engineer &amp; Graphics Operator</div>
+          <div class="exp-role-header">
+            <div class="exp-role">Audio Engineer &amp; Graphics Operator</div>
+            <img class="exp-panel-logo" src="logo-ESPN.png" alt="ESPN" />
+          </div>
           <div class="exp-company-full">KPTV FOX 12 · KGO ABC 7 · ESPN X Games</div>
           <div class="exp-meta">1998 – 2008 · Portland, OR · San Francisco, CA · ESPN X Games</div>
           <ul class="exp-bullets">
@@ -1263,7 +1290,10 @@
         </div>
 
         <div class="exp-panel active" id="exp-adgile">
-          <div class="exp-role">Founder &amp; CEO</div>
+          <div class="exp-role-header">
+            <div class="exp-role">Founder &amp; CEO</div>
+            <img class="exp-panel-logo no-invert" src="logo-Adgile.png" alt="Adgile Gaming" />
+          </div>
           <div class="exp-company-full">Adgile Gaming, LLC — Nashville, TN</div>
           <div class="exp-meta">2025 – Present · Indie Game Studio · Flagship: Arachno Arena</div>
           <ul class="exp-bullets">
@@ -1341,7 +1371,10 @@
           <p class="work-subtitle">Founder, Creative Director, Developer</p>
           <p class="work-desc">A 2D deck-building Living Card Game with spider-themed strategy, mobile-first design, and AI-assisted development pipeline. Built in Unity with C# using agentic AI workflows. Targeting mobile and Steam.</p>
         </div>
-        <span class="work-year">2025 – Present</span>
+        <div class="work-meta">
+          <span class="work-year">2025 – Present</span>
+          <img class="work-logo" src="logo-Arachno-Arena.png" alt="Arachno Arena" />
+        </div>
       </div>
 
       <div class="work-item">
@@ -1351,7 +1384,10 @@
           <p class="work-subtitle">Senior Video Producer — 7 Years</p>
           <p class="work-desc">Produced and led the complete video and audio content strategy for one of the fastest-growing SaaS brands in marketing technology — from Series A through public offering on the NYSE. Short and long-form content across social, education, and marketing channels.</p>
         </div>
-        <span class="work-year">2018 – 2025</span>
+        <div class="work-meta">
+          <span class="work-year">2018 – 2025</span>
+          <img class="work-logo" src="logo-Klaviyo.png" alt="Klaviyo" style="filter:invert(1) opacity(0.6);" />
+        </div>
       </div>
 
       <div class="work-item">
@@ -1361,7 +1397,13 @@
           <p class="work-subtitle">Senior Audio Engineer — NESN</p>
           <p class="work-desc">10 years mixing live audio for New England Sports Network's flagship Red Sox and Bruins coverage. Co-created a remote audio rig for live sports TV. Regional Emmy nominee for Best Audio.</p>
         </div>
-        <span class="work-year">2008 – 2018</span>
+        <div class="work-meta">
+          <span class="work-year">2008 – 2018</span>
+          <div class="work-logo-pair">
+            <img class="work-logo" src="logo-RedSox.png" alt="Boston Red Sox" />
+            <img class="work-logo" src="logo-Bruins.png" alt="Boston Bruins" />
+          </div>
+        </div>
       </div>
 
       <div class="work-item">
@@ -1371,7 +1413,10 @@
           <p class="work-subtitle">Audio — National Emmy Award, Best Sports Remote Production</p>
           <p class="work-desc">Operated parabolic and shotgun microphones for live X Games remote production in 1998 and 1999. The 1998 broadcast earned a National Emmy Award for Best Sports Remote Production.</p>
         </div>
-        <span class="work-year">1998 – 1999</span>
+        <div class="work-meta">
+          <span class="work-year">1998 – 1999</span>
+          <img class="work-logo" src="logo-X-Games.png" alt="ESPN X Games" />
+        </div>
       </div>
     </div>
 
