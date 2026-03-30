@@ -566,7 +566,29 @@
     .exp-nav-item.active .exp-nav-bar,
     .exp-nav-item:hover .exp-nav-bar { width: 28px; }
 
-    .exp-content { background: var(--bg); }
+    .exp-nav-logo {
+      display: block;
+      height: 22px;
+      width: auto;
+      max-width: 90px;
+      object-fit: contain;
+      object-position: left center;
+      filter: invert(1) opacity(0.45);
+      transition: filter 0.2s;
+      margin-bottom: 0.5rem;
+    }
+    .exp-nav-item:hover .exp-nav-logo,
+    .exp-nav-item.active .exp-nav-logo {
+      filter: invert(1) opacity(0.85);
+    }
+    /* Adgile logo is already dark — don't invert */
+    .exp-nav-logo.no-invert {
+      filter: opacity(0.45);
+    }
+    .exp-nav-item:hover .exp-nav-logo.no-invert,
+    .exp-nav-item.active .exp-nav-logo.no-invert {
+      filter: opacity(0.85);
+    }
     .exp-panel { padding: 2.5rem; display: none; }
     .exp-panel.active { display: block; }
 
@@ -1161,21 +1183,25 @@
     <div class="exp-grid reveal">
       <div class="exp-sidebar">
         <div class="exp-nav-item" onclick="showExp('adgile',this)">
+          <img class="exp-nav-logo no-invert" src="logo-Adgile.png" alt="Adgile Gaming" />
           <div class="exp-nav-company">Adgile Gaming</div>
           <div class="exp-nav-years">2025 – Present · Nashville</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item active" onclick="showExp('klaviyo',this)">
+          <img class="exp-nav-logo" src="logo-Klaviyo.png" alt="Klaviyo" />
           <div class="exp-nav-company">Klaviyo</div>
           <div class="exp-nav-years">2018 – 2025 · Boston / Remote</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item" onclick="showExp('nesn',this)">
+          <img class="exp-nav-logo" src="logo-NESN.png" alt="NESN" />
           <div class="exp-nav-company">NESN</div>
           <div class="exp-nav-years">2008 – 2018 · Watertown, MA</div>
           <div class="exp-nav-bar"></div>
         </div>
         <div class="exp-nav-item" onclick="showExp('broadcast',this)">
+          <img class="exp-nav-logo" src="logo-ESPN.png" alt="ESPN" />
           <div class="exp-nav-company">FOX / ABC / ESPN</div>
           <div class="exp-nav-years">1998 – 2008 · Portland / SF</div>
           <div class="exp-nav-bar"></div>
